@@ -16,17 +16,24 @@ public class Task01 {
 
     public static void main(String[] args) {
 
-        System.out.println(powNum(3, 2));
-        System.out.println(powNum(2, -2));
-        System.out.println(powNum(3, 0));
-        System.out.println(powNum(0, 0));
+//        System.out.println(powNum(3, 2));
+//        System.out.println(powNum(2, -2));
+//        System.out.println(powNum(3, 0));
+//        System.out.println(powNum(0, 0));
+
+//        System.out.println(powReq(3, 2));
+//        System.out.println(powReq(2, -2));
+//        System.out.println(powReq(3, 0));
+//        System.out.println(powReq(0, 0));
+
+
     }
 
     public static double powNum(double a, int b) {
 
 
         if (a == 0 && b == 0) {
-            System.out.println("не определено");
+            throw new RuntimeException("не определено");
         }
         if (b == 0) return 1;
         if (b == 1) return a;
@@ -50,4 +57,25 @@ public class Task01 {
 
         return res;
     }
+
+    public static double powReq(double num, int pow) {
+
+        if (pow == 0) {
+            return 1;
+        }
+        if (pow < 0) {
+            return powReq(1 / num, -pow);
+        }
+
+        double result = powReq(num, pow / 2);
+
+        if (pow % 2 == 0) {
+            return result * result;
+        } else {
+            return result * result * num;
+        }
+
+    }
+
+
 }
